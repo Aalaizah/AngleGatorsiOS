@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FAB8B74C1BAF86EE00EDF222 /* gator20.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB8B74B1BAF86EE00EDF222 /* gator20.png */; };
 		FAC679051BAE88CC00793D20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC679041BAE88CC00793D20 /* AppDelegate.swift */; };
 		FAC679071BAE88CC00793D20 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAC679061BAE88CC00793D20 /* GameScene.sks */; };
 		FAC679091BAE88CC00793D20 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC679081BAE88CC00793D20 /* GameScene.swift */; };
@@ -15,6 +16,9 @@
 		FAC679101BAE88CC00793D20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAC6790F1BAE88CC00793D20 /* Images.xcassets */; };
 		FAC679131BAE88CC00793D20 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC679111BAE88CC00793D20 /* LaunchScreen.xib */; };
 		FAC6791F1BAE88CC00793D20 /* AngleGatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6791E1BAE88CC00793D20 /* AngleGatorsTests.swift */; };
+		FAC6792B1BAE896100793D20 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6792A1BAE896100793D20 /* GameOverScene.swift */; };
+		FAD4EE7B1BAF4A2400B928C0 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = FAD4EE7A1BAF4A2400B928C0 /* Assets */; };
+		FAD4EE7D1BAF4AA900B928C0 /* gator0.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD4EE7C1BAF4AA900B928C0 /* gator0.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FAB8B74B1BAF86EE00EDF222 /* gator20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gator20.png; sourceTree = "<group>"; };
 		FAC678FF1BAE88CC00793D20 /* AngleGators.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AngleGators.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC679031BAE88CC00793D20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAC679041BAE88CC00793D20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +45,9 @@
 		FAC679181BAE88CC00793D20 /* AngleGatorsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AngleGatorsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC6791D1BAE88CC00793D20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAC6791E1BAE88CC00793D20 /* AngleGatorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleGatorsTests.swift; sourceTree = "<group>"; };
+		FAC6792A1BAE896100793D20 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		FAD4EE7A1BAF4A2400B928C0 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
+		FAD4EE7C1BAF4AA900B928C0 /* gator0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gator0.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,7 @@
 		FAC678F61BAE88CC00793D20 = {
 			isa = PBXGroup;
 			children = (
+				FAD4EE7A1BAF4A2400B928C0 /* Assets */,
 				FAC679011BAE88CC00793D20 /* AngleGators */,
 				FAC6791B1BAE88CC00793D20 /* AngleGatorsTests */,
 				FAC679001BAE88CC00793D20 /* Products */,
@@ -81,6 +90,8 @@
 		FAC679011BAE88CC00793D20 /* AngleGators */ = {
 			isa = PBXGroup;
 			children = (
+				FAB8B74B1BAF86EE00EDF222 /* gator20.png */,
+				FAD4EE7C1BAF4AA900B928C0 /* gator0.png */,
 				FAC679041BAE88CC00793D20 /* AppDelegate.swift */,
 				FAC679061BAE88CC00793D20 /* GameScene.sks */,
 				FAC679081BAE88CC00793D20 /* GameScene.swift */,
@@ -89,6 +100,7 @@
 				FAC6790F1BAE88CC00793D20 /* Images.xcassets */,
 				FAC679111BAE88CC00793D20 /* LaunchScreen.xib */,
 				FAC679021BAE88CC00793D20 /* Supporting Files */,
+				FAC6792A1BAE896100793D20 /* GameOverScene.swift */,
 			);
 			path = AngleGators;
 			sourceTree = "<group>";
@@ -198,9 +210,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAB8B74C1BAF86EE00EDF222 /* gator20.png in Resources */,
+				FAD4EE7B1BAF4A2400B928C0 /* Assets in Resources */,
 				FAC679131BAE88CC00793D20 /* LaunchScreen.xib in Resources */,
 				FAC679101BAE88CC00793D20 /* Images.xcassets in Resources */,
 				FAC679071BAE88CC00793D20 /* GameScene.sks in Resources */,
+				FAD4EE7D1BAF4AA900B928C0 /* gator0.png in Resources */,
 				FAC6790E1BAE88CC00793D20 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,6 +236,7 @@
 			files = (
 				FAC679091BAE88CC00793D20 /* GameScene.swift in Sources */,
 				FAC6790B1BAE88CC00793D20 /* GameViewController.swift in Sources */,
+				FAC6792B1BAE896100793D20 /* GameOverScene.swift in Sources */,
 				FAC679051BAE88CC00793D20 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,6 +435,7 @@
 				FAC679241BAE88CC00793D20 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FAC679251BAE88CC00793D20 /* Build configuration list for PBXNativeTarget "AngleGatorsTests" */ = {
 			isa = XCConfigurationList;
@@ -427,6 +444,7 @@
 				FAC679271BAE88CC00793D20 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
