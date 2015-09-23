@@ -91,6 +91,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var lives = 3
     let scoreLabelName = "scoreLabel"
     let angleLabelName = "angelLabel"
+    let livesLabelName = "livesLabel"
     
     /*func printFonts() {
         let fontFamilyNames = UIFont.familyNames()
@@ -120,6 +121,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 ])
             ))
         
+        addLivesLabel()
         addScoreLabel()
         addAlligator()
         addAngleLabel()
@@ -137,7 +139,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(player)
     }
-    
+    //func addFruitOfType()
     func addFruit() {
         
         // Create sprite
@@ -151,7 +153,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Position the monster slightly off-screen along the right edge,
         // and along a random position along the Y axis as calculated above
-        fruit.position = CGPoint(x: size.width + fruit.size.width/2, y: size.height * 0.5)
+        fruit.position = CGPoint(x: size.width + fruit.size.width/2, y: size.height * 0.4)
         
         // Add the monster to the scene
         addChild(fruit)
@@ -159,7 +161,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let movementSpeed = 5.0
         
         // Create the actions
-        let actionMove = SKAction.moveTo(CGPoint(x: -fruit.size.width/2, y: size.height * 0.5),
+        let actionMove = SKAction.moveTo(CGPoint(x: -fruit.size.width/2, y: size.height * 0.4),
             duration: NSTimeInterval(movementSpeed))
         let actionMoveDone = SKAction.removeFromParent()
         let loseAction = SKAction.runBlock(){
@@ -184,11 +186,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let scoreLabel = SKLabelNode(fontNamed: "Courier")
         scoreLabel.name = scoreLabelName
         scoreLabel.fontSize = 40
+        scoreLabel.fontColor = SKColor.blackColor()
+        scoreLabel.text = String(format: "Score: %03u", score)
         
-        scoreLabel.text = String(score)
-        
-        scoreLabel.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 4)
+        scoreLabel.position = CGPoint(x: frame.size.width / 4, y: (frame.size.height / 5) * 4)
         addChild(scoreLabel)
+    }
+    
+    func addLivesLabel() {
+        let livesLabel = SKLabelNode(fontNamed: "Courier")
+        livesLabel.name = livesLabelName
+        livesLabel.text = String(format: "Lives: %01u", lives)
+        livesLabel.fontSize = 40
+        livesLabel.fontColor = SKColor.blackColor()
+        livesLabel.position = CGPoint(x: frame.size.width / 4, y: ((frame.size.height / 5) * 4) - 50)
+        addChild(livesLabel)
+    }
+    
+    func addFruitLabel() {
+        
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -222,7 +238,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.view?.presentScene(gameOverScene, transition: reveal)
         }
         let scoreLabel = self.childNodeWithName(scoreLabelName) as! SKLabelNode
-        scoreLabel.text = String(format: "Score: %04u", score)
+        scoreLabel.text = String(format: "Score: %03u", score)
+        let livesLabel = self.childNodeWithName(livesLabelName) as! SKLabelNode
+        livesLabel.text = String(format: "Lives: %01u", lives)
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
