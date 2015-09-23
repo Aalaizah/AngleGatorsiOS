@@ -73,6 +73,14 @@ extension CGPoint {
     }
 }
 
+func random() -> CGFloat {
+    return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+}
+
+func random(min: CGFloat, max: CGFloat) -> CGFloat {
+    return random() * (max - min) + min
+}
+
 var score: Int = 0
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -80,14 +88,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let player = SKSpriteNode(imageNamed: "gator0")
     
     var fruitEaten = 0
-    let alligatorAngles = [0, 10, 20, 30, 40, 50 , 70, 90]
+    let angles = [0, 10, 20, 30, 40, 50 , 70, 90]
     var alligatorAngle = 0
     var current = 0
     //let angleLabel = SKLabelNode(fontNamed: "Chalkduster")
     let texture1 = SKTexture(imageNamed: "gator0")
     let texture2 = SKTexture(imageNamed: "gator20")
     var alligatorImages = [SKTexture]()
-    let fruitAngle = 30
+    var fruitAngle = 0
     var lives = 3
     let scoreLabelName = "scoreLabel"
     let angleLabelName = "angelLabel"
@@ -214,11 +222,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let touchLocation = touch.locationInNode(self)
         if touchLocation.x < size.width/2 && alligatorAngle < 90 {
             current += 1
-            alligatorAngle = alligatorAngles[current]
+            alligatorAngle = angles[current]
         }
         else if touchLocation.x > size.width/2 && alligatorAngle > 0 {
             current -= 1
-            alligatorAngle  = alligatorAngles[current]
+            alligatorAngle  = angles[current]
         }
         let angleLabel = childNodeWithName(angleLabelName) as! SKLabelNode
         angleLabel.text = String(alligatorAngle)
