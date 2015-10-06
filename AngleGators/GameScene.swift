@@ -86,6 +86,7 @@ var score: Int = 0
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let player = SKSpriteNode(imageNamed: "gator0")
+    let fruitSpeed = 3
     
     var fruitEaten = 0
     let angles = [0, 10, 20, 30, 40, 50 , 70, 90]
@@ -95,11 +96,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let texture1 = SKTexture(imageNamed: "gator0")
     let texture2 = SKTexture(imageNamed: "gator20")
     var alligatorImages = [SKTexture]()
-    var fruitAngle = 0
     var lives = 3
     let scoreLabelName = "scoreLabel"
     let angleLabelName = "angelLabel"
     let livesLabelName = "livesLabel"
+    let fruitLabelName = "fruitLabel"
     
     /*func printFonts() {
         let fontFamilyNames = UIFont.familyNames()
@@ -115,16 +116,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         
         //playBackgroundMusic("background-music-aac.caf")
+        let background = SKSpriteNode(imageNamed: "mainbackground")
+        background.position = CGPointMake(self.size.width/2, self.size.height/2);
+        //addChild(background)
         backgroundColor = SKColor.whiteColor()
-        //player.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
-        //addChild(player)
-        
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
         
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([
-                SKAction.runBlock(addFruit),
+                SKAction.runBlock{self.setupFruit()},
                 SKAction.waitForDuration(1.0)
                 ])
             ))
@@ -134,6 +135,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addAlligator()
         addAngleLabel()
         //printFonts()
+    }
+    
+    override func update(currentTime: NSTimeInterval) {
+        moveFruit()
     }
     
     func addAlligator() {
@@ -146,38 +151,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.physicsBody?.collisionBitMask = PhysicsCategory.None
         
         addChild(player)
-    }
-    //func addFruitOfType()
-    func addFruit() {
-        
-        // Create sprite
-        let fruit = SKSpriteNode(color: SKColor.purpleColor(), size: fruitSize)
-        
-        fruit.physicsBody = SKPhysicsBody(rectangleOfSize: fruit.frame.size) // 1
-        fruit.physicsBody?.dynamic = true // 2
-        fruit.physicsBody?.categoryBitMask = PhysicsCategory.Fruit // 3
-        fruit.physicsBody?.contactTestBitMask = PhysicsCategory.Alligator // 4
-        fruit.physicsBody?.collisionBitMask = PhysicsCategory.None
-        
-        // Position the monster slightly off-screen along the right edge,
-        // and along a random position along the Y axis as calculated above
-        fruit.position = CGPoint(x: size.width + fruit.size.width/2, y: size.height * 0.4)
-        
-        // Add the monster to the scene
-        addChild(fruit)
-        
-        let movementSpeed = 5.0
-        
-        // Create the actions
-        let actionMove = SKAction.moveTo(CGPoint(x: -fruit.size.width/2, y: size.height * 0.4),
-            duration: NSTimeInterval(movementSpeed))
-        let actionMoveDone = SKAction.removeFromParent()
-        let loseAction = SKAction.runBlock(){
-            let reveal = SKTransition.flipHorizontalWithDuration(0.5)
-            let gameOverScene = GameOverScene(size: self.size, won: false)
-            self.view?.presentScene(gameOverScene, transition:reveal)
-        }
-        fruit.runAction(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
     }
     
     func addAngleLabel() {
@@ -212,7 +185,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func addFruitLabel() {
-        
+        let fruitLabel = SKLabelNode(fontNamed: "Courier")
+        fruitLabel.name = fruitLabelName
+    }
+    
+    func moveFruit() {
+        enumerateChildNodesWithName("fruit") { node, stop in
+            let fruit = node as! Fruit
+            fruit.position.x -= CGFloat(self.fruitSpeed)
+            fruit.label.position.x -= CGFloat(self.fruitSpeed)
+            NSLog(String(fruit.label))
+        }
+    }
+    
+    func setupFruit() {
+        let fruit:Fruit = Fruit(imageName: "peach", label: true)
+        fruit.position = CGPoint(x: frame.size.width + fruit.size.width, y: size.height * 0.43)
+        addChild(fruit)
+        addChild(fruit.label)
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -232,9 +222,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         angleLabel.text = String(alligatorAngle)
     }
     
-    func fruitDidCollideWithAlligator(fruit:SKSpriteNode, alligator:SKSpriteNode) {
+    func fruitDidCollideWithAlligator(fruit:Fruit, alligator:SKSpriteNode) {
         fruit.removeFromParent()
-        if (alligatorAngle < fruitAngle) {
+        if (alligatorAngle < fruit.fruitAngle) {
             lives -= 1
         } else {
             fruitEaten++
@@ -264,7 +254,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if ((firstBody.categoryBitMask & PhysicsCategory.Fruit != 0) &&
             (secondBody.categoryBitMask & PhysicsCategory.Alligator != 0)) {
-                fruitDidCollideWithAlligator(firstBody.node as! SKSpriteNode, alligator: secondBody.node as! SKSpriteNode)
+                fruitDidCollideWithAlligator(firstBody.node as! Fruit, alligator: secondBody.node as! SKSpriteNode)
         }
     }
 }
