@@ -9,17 +9,19 @@
 import SpriteKit
 
 class Fruit: SKSpriteNode {
-    var fruitAngle: Int = 0
+    var fruitAngle = 0
     let fruitAngles = [10, 20, 30, 40, 50 , 70, 90]
+    let fruits = [["apple", "10"], ["orange", "50"], ["peach", "30"]]
     var fruitHeight: Int = 10
     var fruitWidth: Int = 15
+    let labelName = "fruit"
     var label:SKLabelNode = SKLabelNode()
     
-    init(imageName: String, label: Bool) {
-        let texture = SKTexture(imageNamed: imageName)
+    init(fruitType: Int, label: Bool) {
+        let texture = SKTexture(imageNamed: self.fruits[fruitType][0])
         super.init(texture: texture, color: SKColor.clearColor(), size: texture.size())
         self.name = "fruit"
-        self.fruitAngle = 30
+        self.fruitAngle = Int(self.fruits[fruitType][1])!
         self.physicsBody = SKPhysicsBody(rectangleOfSize: texture.size()) // 1
         self.physicsBody?.dynamic = true // 2
         self.physicsBody?.categoryBitMask = PhysicsCategory.Fruit // 3
@@ -27,7 +29,13 @@ class Fruit: SKSpriteNode {
         self.physicsBody?.collisionBitMask = PhysicsCategory.None
         if(label) {
             let label = SKLabelNode(fontNamed: "Courier")
-            label.text = "30"
+            label.name = labelName
+            label.text = String(self.fruits[fruitType][1])
+            label.horizontalAlignmentMode = .Left
+            label.fontSize = 40
+            label.fontColor = SKColor.blackColor()
+            label.position = CGPoint(x: frame.size.width - self.size.width - 20, y: frame.size.height * 0.7)
+            addChild(label)
         }
     }
     

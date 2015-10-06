@@ -126,7 +126,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([
                 SKAction.runBlock{self.setupFruit()},
-                SKAction.waitForDuration(1.0)
+                SKAction.waitForDuration(2.0)
                 ])
             ))
         
@@ -193,13 +193,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         enumerateChildNodesWithName("fruit") { node, stop in
             let fruit = node as! Fruit
             fruit.position.x -= CGFloat(self.fruitSpeed)
-            fruit.label.position.x -= CGFloat(self.fruitSpeed)
-            NSLog(String(fruit.label))
         }
+        /*enumerateChildNodesWithName(fruitLabelName) { node, stop in
+            let label = node as! SKLabelNode
+            label.position.x -= CGFloat(self.fruitSpeed)
+        }*/
     }
     
     func setupFruit() {
-        let fruit:Fruit = Fruit(imageName: "peach", label: true)
+        let number = Int(random(0, max: 3))
+        let fruit:Fruit = Fruit(fruitType: number, label: true)
         fruit.position = CGPoint(x: frame.size.width + fruit.size.width, y: size.height * 0.43)
         addChild(fruit)
         addChild(fruit.label)
