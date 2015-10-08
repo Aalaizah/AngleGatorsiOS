@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-extension SKNode {
+/*extension SKNode {
     class func unarchiveFromFile(file : String) -> SKNode? {
         if let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks") {
             let sceneData = try! NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe)
@@ -30,7 +30,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
+        if let scene = GameScene.unarchiveFromFile("NewGameScreen") as? GameScene {
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = true
@@ -64,6 +64,23 @@ class GameViewController: UIViewController {
     }
 
     override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+}*/
+
+class GameViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let scene = NewGameScreen(size: view.bounds.size)
+        let skView = view as! SKView
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        skView.ignoresSiblingOrder = true
+        scene.scaleMode = .ResizeFill
+        skView.presentScene(scene)
+    }
+    
+    func preferStatusBarHidden() -> Bool {
         return true
     }
 }

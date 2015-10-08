@@ -39,8 +39,6 @@ struct PhysicsCategory {
     static let Alligator    : UInt32 = 0b10     // 2
 }
 
-let fruitSize = CGSize(width: 24, height: 24)
-
 func + (left: CGPoint, right: CGPoint) -> CGPoint {
     return CGPoint(x: left.x + right.x, y: left.y + right.y)
 }
@@ -63,15 +61,7 @@ func / (point: CGPoint, scalar: CGFloat) -> CGPoint {
     }
 #endif
 
-extension CGPoint {
-    func length() -> CGFloat {
-        return sqrt(x*x + y*y)
-    }
-    
-    func normalize() -> CGPoint {
-        return self / length()
-    }
-}
+
 
 func random() -> CGFloat {
     return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
@@ -82,35 +72,27 @@ func random(min: CGFloat, max: CGFloat) -> CGFloat {
 }
 
 var score: Int = 0
+var FontSize: CGFloat = 20
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    let player = SKSpriteNode(imageNamed: "gator0")
+    var player:Alligator = Alligator()
     let fruitSpeed = 3
-    
-    var fruitEaten = 0
-    let angles = [0, 10, 20, 30, 40, 50 , 70, 90]
-    var alligatorAngle = 0
+    var tutorial = true
+    let angles = [10, 30, 50 , 70, 90]
+    var alligatorAngle = 10
     var current = 0
-    //let angleLabel = SKLabelNode(fontNamed: "Chalkduster")
-    let texture1 = SKTexture(imageNamed: "gator0")
-    let texture2 = SKTexture(imageNamed: "gator20")
-    var alligatorImages = [SKTexture]()
-    var lives = 3
+    var lives:Int = 3 {
+        didSet {
+            if(lives <= 0) {
+                kill()
+            }
+        }
+}
     let scoreLabelName = "scoreLabel"
     let angleLabelName = "angelLabel"
     let livesLabelName = "livesLabel"
     let fruitLabelName = "fruitLabel"
-    
-    /*func printFonts() {
-        let fontFamilyNames = UIFont.familyNames()
-        for familyName in fontFamilyNames {
-            print("------------------------------")
-            print("Font Family Name = [\(familyName)]")
-            let names = UIFont.fontNamesForFamilyName(familyName as! String)
-            print("Font Names = [\(names)]")
-        }
-    }*/
 
     
     override func didMoveToView(view: SKView) {
@@ -126,7 +108,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([
                 SKAction.runBlock{self.setupFruit()},
-                SKAction.waitForDuration(2.0)
+                SKAction.waitForDuration(1.75)
                 ])
             ))
         
@@ -134,7 +116,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addScoreLabel()
         addAlligator()
         addAngleLabel()
-        //printFonts()
     }
     
     override func update(currentTime: NSTimeInterval) {
@@ -144,12 +125,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func addAlligator() {
         player.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
         
-        player.physicsBody = SKPhysicsBody(rectangleOfSize: player.frame.size)
-        player.physicsBody?.dynamic = false
-        player.physicsBody?.categoryBitMask = PhysicsCategory.Alligator
-        player.physicsBody?.contactTestBitMask = PhysicsCategory.Fruit
-        player.physicsBody?.collisionBitMask = PhysicsCategory.None
-        
         addChild(player)
     }
     
@@ -157,20 +132,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let angleLabel = SKLabelNode(fontNamed: "Courier")
         angleLabel.name = angleLabelName
         angleLabel.text = String(alligatorAngle)
-        angleLabel.fontSize = 40
+        angleLabel.fontSize = FontSize
         angleLabel.fontColor = SKColor.blackColor()
         angleLabel.position = CGPoint(x: player.position.x, y: player.position.y + 30)
         addChild(angleLabel)
     }
     
+    func removeAngleLabel() {
+        let angleLabel = self.childNodeWithName(angleLabelName) as! SKLabelNode
+        angleLabel.removeFromParent()
+    }
+    
     func addScoreLabel() {
         let scoreLabel = SKLabelNode(fontNamed: "Courier")
         scoreLabel.name = scoreLabelName
-        scoreLabel.fontSize = 40
+        scoreLabel.fontSize = FontSize
         scoreLabel.fontColor = SKColor.blackColor()
         scoreLabel.text = String(format: "Score: %03u", score)
         
-        scoreLabel.position = CGPoint(x: frame.size.width / 4, y: (frame.size.height / 5) * 4)
+        scoreLabel.position = CGPoint(x: frame.size.width / 4, y: (frame.size.height / 6) * 5)
         addChild(scoreLabel)
     }
     
@@ -178,15 +158,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let livesLabel = SKLabelNode(fontNamed: "Courier")
         livesLabel.name = livesLabelName
         livesLabel.text = String(format: "Lives: %01u", lives)
-        livesLabel.fontSize = 40
+        livesLabel.fontSize = FontSize
         livesLabel.fontColor = SKColor.blackColor()
-        livesLabel.position = CGPoint(x: frame.size.width / 4, y: ((frame.size.height / 5) * 4) - 50)
+        livesLabel.position = CGPoint(x: frame.size.width / 4, y: ((frame.size.height / 6) * 5) - 30)
         addChild(livesLabel)
-    }
-    
-    func addFruitLabel() {
-        let fruitLabel = SKLabelNode(fontNamed: "Courier")
-        fruitLabel.name = fruitLabelName
     }
     
     func moveFruit() {
@@ -194,18 +169,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let fruit = node as! Fruit
             fruit.position.x -= CGFloat(self.fruitSpeed)
         }
-        /*enumerateChildNodesWithName(fruitLabelName) { node, stop in
-            let label = node as! SKLabelNode
-            label.position.x -= CGFloat(self.fruitSpeed)
-        }*/
     }
     
     func setupFruit() {
-        let number = Int(random(0, max: 3))
-        let fruit:Fruit = Fruit(fruitType: number, label: true)
-        fruit.position = CGPoint(x: frame.size.width + fruit.size.width, y: size.height * 0.43)
-        addChild(fruit)
-        addChild(fruit.label)
+        let number = Int(random(CGFloat(0), max: CGFloat(fruits.count)))
+        if (tutorial) {
+            let fruit:Fruit = Fruit(fruitType: number, label: true)
+            fruit.position = CGPoint(x: frame.size.width + fruit.size.width, y: size.height * 0.43)
+            addChild(fruit)
+            addChild(fruit.label)
+        }
+        else {
+            let fruit:Fruit = Fruit(fruitType: number, label: false)
+            fruit.position = CGPoint(x: frame.size.width + fruit.size.width, y: size.height * 0.43)
+            addChild(fruit)
+            addChild(fruit.label)
+        }
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -213,11 +192,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let array = Array(touches)
         let touch = array[0]
         let touchLocation = touch.locationInNode(self)
-        if touchLocation.x < size.width/2 && alligatorAngle < 90 {
+        if touchLocation.x < CGRectGetMidX(self.frame) && alligatorAngle < 90 {
             current += 1
             alligatorAngle = angles[current]
         }
-        else if touchLocation.x > size.width/2 && alligatorAngle > 0 {
+        else if touchLocation.x > CGRectGetMidX(self.frame) && alligatorAngle > 10 {
             current -= 1
             alligatorAngle  = angles[current]
         }
@@ -227,21 +206,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func fruitDidCollideWithAlligator(fruit:Fruit, alligator:SKSpriteNode) {
         fruit.removeFromParent()
-        if (alligatorAngle < fruit.fruitAngle) {
-            lives -= 1
-        } else {
-            fruitEaten++
+        if(alligatorAngle == fruit.fruitAngle) {
             score++
         }
-        if (lives <= 0) {
-            let reveal = SKTransition.flipHorizontalWithDuration(0.5)
-            let gameOverScene = GameOverScene(size: self.size, won: false)
-            self.view?.presentScene(gameOverScene, transition: reveal)
+        else {
+            lives -= 1
         }
         let scoreLabel = self.childNodeWithName(scoreLabelName) as! SKLabelNode
         scoreLabel.text = String(format: "Score: %03u", score)
         let livesLabel = self.childNodeWithName(livesLabelName) as! SKLabelNode
         livesLabel.text = String(format: "Lives: %01u", lives)
+    }
+    
+    func kill() {
+        let reveal = SKTransition.flipHorizontalWithDuration(0.5)
+        let gameOverScene = GameOverScene(size: self.size)
+        self.view?.presentScene(gameOverScene, transition: reveal)
     }
     
     func didBeginContact(contact: SKPhysicsContact) {

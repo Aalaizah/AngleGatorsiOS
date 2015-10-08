@@ -32,8 +32,10 @@
 		FAB540FF1BC42889002F56C8 /* mainbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB540E61BC42889002F56C8 /* mainbackground.png */; settings = {ASSET_TAGS = (); }; };
 		FAB541001BC42889002F56C8 /* mainbackground_tail.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB540E71BC42889002F56C8 /* mainbackground_tail.png */; settings = {ASSET_TAGS = (); }; };
 		FAB541011BC42889002F56C8 /* playbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB540E81BC42889002F56C8 /* playbackground.png */; settings = {ASSET_TAGS = (); }; };
-		FAB541051BC42B66002F56C8 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAB541041BC42B66002F56C8 /* GameScene.sks */; settings = {ASSET_TAGS = (); }; };
 		FAB541071BC42B95002F56C8 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB541061BC42B95002F56C8 /* Utilities.swift */; settings = {ASSET_TAGS = (); }; };
+		FAB792321BC45F6E006C4A4D /* NewGameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB792311BC45F6E006C4A4D /* NewGameScreen.swift */; settings = {ASSET_TAGS = (); }; };
+		FAB792341BC461EB006C4A4D /* newgamebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB792331BC461EB006C4A4D /* newgamebtn.png */; settings = {ASSET_TAGS = (); }; };
+		FABEC8381BC4B869006E03EA /* Alligator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABEC8371BC4B869006E03EA /* Alligator.swift */; settings = {ASSET_TAGS = (); }; };
 		FAC679051BAE88CC00793D20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC679041BAE88CC00793D20 /* AppDelegate.swift */; };
 		FAC679091BAE88CC00793D20 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC679081BAE88CC00793D20 /* GameScene.swift */; };
 		FAC6790B1BAE88CC00793D20 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6790A1BAE88CC00793D20 /* GameViewController.swift */; };
@@ -81,8 +83,10 @@
 		FAB540E61BC42889002F56C8 /* mainbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainbackground.png; sourceTree = "<group>"; };
 		FAB540E71BC42889002F56C8 /* mainbackground_tail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainbackground_tail.png; sourceTree = "<group>"; };
 		FAB540E81BC42889002F56C8 /* playbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playbackground.png; sourceTree = "<group>"; };
-		FAB541041BC42B66002F56C8 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		FAB541061BC42B95002F56C8 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		FAB792311BC45F6E006C4A4D /* NewGameScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewGameScreen.swift; path = ../NewGameScreen.swift; sourceTree = "<group>"; };
+		FAB792331BC461EB006C4A4D /* newgamebtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = newgamebtn.png; path = foods/newgamebtn.png; sourceTree = "<group>"; };
+		FABEC8371BC4B869006E03EA /* Alligator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alligator.swift; sourceTree = "<group>"; };
 		FAC678FF1BAE88CC00793D20 /* AngleGators.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AngleGators.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC679031BAE88CC00793D20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAC679041BAE88CC00793D20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 				FAB540E21BC42889002F56C8 /* gator45.png */,
 				FAB540E31BC42889002F56C8 /* gator70.png */,
 				FAB540E41BC42889002F56C8 /* gator90.png */,
+				FAB792331BC461EB006C4A4D /* newgamebtn.png */,
 				FAB540E51BC42889002F56C8 /* iPhoneAppIcon.png */,
 				FAB540E61BC42889002F56C8 /* mainbackground.png */,
 				FAB540E71BC42889002F56C8 /* mainbackground_tail.png */,
@@ -187,8 +192,9 @@
 			children = (
 				FAB540CD1BC42889002F56C8 /* Assets */,
 				FAC679041BAE88CC00793D20 /* AppDelegate.swift */,
-				FAB541041BC42B66002F56C8 /* GameScene.sks */,
+				FAB792311BC45F6E006C4A4D /* NewGameScreen.swift */,
 				FAC679081BAE88CC00793D20 /* GameScene.swift */,
+				FABEC8371BC4B869006E03EA /* Alligator.swift */,
 				FAB541061BC42B95002F56C8 /* Utilities.swift */,
 				FAC6790A1BAE88CC00793D20 /* GameViewController.swift */,
 				FAC6790C1BAE88CC00793D20 /* Main.storyboard */,
@@ -312,6 +318,7 @@
 				FAB540F21BC42889002F56C8 /* orangeslice.png in Resources */,
 				FAB540EA1BC42889002F56C8 /* papyrus.png in Resources */,
 				FAB540FB1BC42889002F56C8 /* gator45.png in Resources */,
+				FAB792341BC461EB006C4A4D /* newgamebtn.png in Resources */,
 				FAC679131BAE88CC00793D20 /* LaunchScreen.xib in Resources */,
 				FAB540FA1BC42889002F56C8 /* gator20.png in Resources */,
 				FAB540F11BC42889002F56C8 /* orange.png in Resources */,
@@ -321,7 +328,6 @@
 				FAB540F41BC42889002F56C8 /* strawberry.png in Resources */,
 				FAB540ED1BC42889002F56C8 /* appleslice.png in Resources */,
 				FAB540FC1BC42889002F56C8 /* gator70.png in Resources */,
-				FAB541051BC42B66002F56C8 /* GameScene.sks in Resources */,
 				FAB540EE1BC42889002F56C8 /* grapes.png in Resources */,
 				FAB540FF1BC42889002F56C8 /* mainbackground.png in Resources */,
 				FAB540F71BC42889002F56C8 /* yam.png in Resources */,
@@ -356,8 +362,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAB541071BC42B95002F56C8 /* Utilities.swift in Sources */,
+				FABEC8381BC4B869006E03EA /* Alligator.swift in Sources */,
 				FAF2CE091BBCD07800FE870C /* Fruit.swift in Sources */,
 				FAC679091BAE88CC00793D20 /* GameScene.swift in Sources */,
+				FAB792321BC45F6E006C4A4D /* NewGameScreen.swift in Sources */,
 				FAC6790B1BAE88CC00793D20 /* GameViewController.swift in Sources */,
 				FAC6792B1BAE896100793D20 /* GameOverScene.swift in Sources */,
 				FAC679051BAE88CC00793D20 /* AppDelegate.swift in Sources */,

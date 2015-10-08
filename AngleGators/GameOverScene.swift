@@ -11,39 +11,35 @@ import SpriteKit
 
 class GameOverScene: SKScene {
     
-    init(size: CGSize, won:Bool) {
+    override func didMoveToView(view: SKView) {
         
-        super.init(size: size)
+        backgroundColor = SKColor.blackColor()
         
-        // 1
-        backgroundColor = SKColor.whiteColor()
+        let message = "Game Over. Final Score: \(score)"
         
-        // 2
-        let message = won ? "You Won!" : "You Lose :["
-        
-        // 3
-        let label = SKLabelNode(fontNamed: "Chalkduster")
+        let label = SKLabelNode(fontNamed: "Courier")
         label.text = message
-        label.fontSize = 40
-        label.fontColor = SKColor.blackColor()
-        label.position = CGPoint(x: size.width/2, y: size.height/2)
+        label.fontSize = 30
+        label.fontColor = SKColor.whiteColor()
+        label.position = CGPoint(x: size.width/2, y: size.height/2 + 50)
         addChild(label)
         
-        // 4
-        runAction(SKAction.sequence([
-            SKAction.waitForDuration(3.0),
-            SKAction.runBlock() {
-                // 5
-                let reveal = SKTransition.flipHorizontalWithDuration(0.5)
-                let scene = GameScene(size: size)
-                self.view?.presentScene(scene, transition:reveal)
-            }
-            ]))
+        let startGameButton = SKSpriteNode(imageNamed: "newgamebtn")
+        startGameButton.position = CGPointMake(size.width/2, size.height/2)
+        startGameButton.name = "startgame"
+        addChild(startGameButton)
     }
     
-    // 6
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let touch = touches.first as UITouch!
+        let touchLocation = touch.locationInNode(self)
+        let touchedNode = self.nodeAtPoint(touchLocation)
+        if(touchedNode.name == "startgame") {
+            let gameOverScene = GameScene(size: size)
+            gameOverScene.scaleMode = scaleMode
+            let transitionType = SKTransition.flipHorizontalWithDuration(1.0)
+            view?.presentScene(gameOverScene, transition: transitionType)
+        }
     }
     
 }
