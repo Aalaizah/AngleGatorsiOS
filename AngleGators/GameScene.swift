@@ -173,18 +173,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setupFruit() {
         let number = Int(random(CGFloat(0), max: CGFloat(fruits.count)))
-        if (tutorial) {
+        let fruit:Apple = Apple(fruitType: 0)
+        fruit.position  = CGPoint(x: frame.size.width + fruit.size.width, y: size.height * 0.43)
+        addChild(fruit)
+        addChild(fruit.label)
+        /*if (tutorial) {
             let fruit:Fruit = Fruit(fruitType: number, label: true)
             fruit.position = CGPoint(x: frame.size.width + fruit.size.width, y: size.height * 0.43)
             addChild(fruit)
             addChild(fruit.label)
-        }
-        else {
-            let fruit:Fruit = Fruit(fruitType: number, label: false)
-            fruit.position = CGPoint(x: frame.size.width + fruit.size.width, y: size.height * 0.43)
-            addChild(fruit)
-            addChild(fruit.label)
-        }
+        }*/
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {

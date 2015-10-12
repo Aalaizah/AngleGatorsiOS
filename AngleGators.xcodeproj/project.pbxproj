@@ -36,6 +36,7 @@
 		FAB792321BC45F6E006C4A4D /* NewGameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB792311BC45F6E006C4A4D /* NewGameScreen.swift */; settings = {ASSET_TAGS = (); }; };
 		FAB792341BC461EB006C4A4D /* newgamebtn.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB792331BC461EB006C4A4D /* newgamebtn.png */; settings = {ASSET_TAGS = (); }; };
 		FABEC8381BC4B869006E03EA /* Alligator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABEC8371BC4B869006E03EA /* Alligator.swift */; settings = {ASSET_TAGS = (); }; };
+		FAC14AD21BC62B39008AAC64 /* Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC14AD11BC62B39008AAC64 /* Apple.swift */; settings = {ASSET_TAGS = (); }; };
 		FAC679051BAE88CC00793D20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC679041BAE88CC00793D20 /* AppDelegate.swift */; };
 		FAC679091BAE88CC00793D20 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC679081BAE88CC00793D20 /* GameScene.swift */; };
 		FAC6790B1BAE88CC00793D20 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6790A1BAE88CC00793D20 /* GameViewController.swift */; };
@@ -44,6 +45,16 @@
 		FAC679131BAE88CC00793D20 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC679111BAE88CC00793D20 /* LaunchScreen.xib */; };
 		FAC6791F1BAE88CC00793D20 /* AngleGatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6791E1BAE88CC00793D20 /* AngleGatorsTests.swift */; };
 		FAC6792B1BAE896100793D20 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC6792A1BAE896100793D20 /* GameOverScene.swift */; };
+		FADE523E1BCB5E13003BA365 /* Strawberry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE523D1BCB5E13003BA365 /* Strawberry.swift */; settings = {ASSET_TAGS = (); }; };
+		FADE52401BCB5E95003BA365 /* Orange.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE523F1BCB5E95003BA365 /* Orange.swift */; settings = {ASSET_TAGS = (); }; };
+		FADE52421BCB5EEB003BA365 /* Peach.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE52411BCB5EEB003BA365 /* Peach.swift */; settings = {ASSET_TAGS = (); }; };
+		FADE52441BCB5F36003BA365 /* Watermelon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE52431BCB5F36003BA365 /* Watermelon.swift */; settings = {ASSET_TAGS = (); }; };
+		FADE52461BCB5F8B003BA365 /* Yam.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE52451BCB5F8B003BA365 /* Yam.swift */; settings = {ASSET_TAGS = (); }; };
+		FADE52481BCB60B0003BA365 /* Zucchini.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE52471BCB60B0003BA365 /* Zucchini.swift */; settings = {ASSET_TAGS = (); }; };
+		FADE524A1BCB61F5003BA365 /* Acorn.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE52491BCB61F5003BA365 /* Acorn.swift */; settings = {ASSET_TAGS = (); }; };
+		FADE524C1BCB622B003BA365 /* Appleslice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE524B1BCB622B003BA365 /* Appleslice.swift */; settings = {ASSET_TAGS = (); }; };
+		FADE524E1BCB6277003BA365 /* Orangeslice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE524D1BCB6277003BA365 /* Orangeslice.swift */; settings = {ASSET_TAGS = (); }; };
+		FADE52501BCB62AD003BA365 /* Lemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADE524F1BCB62AD003BA365 /* Lemon.swift */; settings = {ASSET_TAGS = (); }; };
 		FAF2CE091BBCD07800FE870C /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF2CE081BBCD07800FE870C /* Fruit.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -87,6 +98,7 @@
 		FAB792311BC45F6E006C4A4D /* NewGameScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewGameScreen.swift; path = ../NewGameScreen.swift; sourceTree = "<group>"; };
 		FAB792331BC461EB006C4A4D /* newgamebtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = newgamebtn.png; path = foods/newgamebtn.png; sourceTree = "<group>"; };
 		FABEC8371BC4B869006E03EA /* Alligator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alligator.swift; sourceTree = "<group>"; };
+		FAC14AD11BC62B39008AAC64 /* Apple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apple.swift; sourceTree = "<group>"; };
 		FAC678FF1BAE88CC00793D20 /* AngleGators.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AngleGators.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC679031BAE88CC00793D20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAC679041BAE88CC00793D20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +111,16 @@
 		FAC6791D1BAE88CC00793D20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAC6791E1BAE88CC00793D20 /* AngleGatorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleGatorsTests.swift; sourceTree = "<group>"; };
 		FAC6792A1BAE896100793D20 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		FADE523D1BCB5E13003BA365 /* Strawberry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strawberry.swift; sourceTree = "<group>"; };
+		FADE523F1BCB5E95003BA365 /* Orange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Orange.swift; path = ../Orange.swift; sourceTree = "<group>"; };
+		FADE52411BCB5EEB003BA365 /* Peach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Peach.swift; sourceTree = "<group>"; };
+		FADE52431BCB5F36003BA365 /* Watermelon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Watermelon.swift; sourceTree = "<group>"; };
+		FADE52451BCB5F8B003BA365 /* Yam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Yam.swift; sourceTree = "<group>"; };
+		FADE52471BCB60B0003BA365 /* Zucchini.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zucchini.swift; sourceTree = "<group>"; };
+		FADE52491BCB61F5003BA365 /* Acorn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Acorn.swift; sourceTree = "<group>"; };
+		FADE524B1BCB622B003BA365 /* Appleslice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appleslice.swift; sourceTree = "<group>"; };
+		FADE524D1BCB6277003BA365 /* Orangeslice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Orangeslice.swift; sourceTree = "<group>"; };
+		FADE524F1BCB62AD003BA365 /* Lemon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lemon.swift; sourceTree = "<group>"; };
 		FAF2CE081BBCD07800FE870C /* Fruit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,6 +217,7 @@
 				FAB792311BC45F6E006C4A4D /* NewGameScreen.swift */,
 				FAC679081BAE88CC00793D20 /* GameScene.swift */,
 				FABEC8371BC4B869006E03EA /* Alligator.swift */,
+				FADE52531BCB637C003BA365 /* FruitCode */,
 				FAB541061BC42B95002F56C8 /* Utilities.swift */,
 				FAC6790A1BAE88CC00793D20 /* GameViewController.swift */,
 				FAC6790C1BAE88CC00793D20 /* Main.storyboard */,
@@ -202,7 +225,6 @@
 				FAC679111BAE88CC00793D20 /* LaunchScreen.xib */,
 				FAC679021BAE88CC00793D20 /* Supporting Files */,
 				FAC6792A1BAE896100793D20 /* GameOverScene.swift */,
-				FAF2CE081BBCD07800FE870C /* Fruit.swift */,
 			);
 			path = AngleGators;
 			sourceTree = "<group>";
@@ -230,6 +252,25 @@
 				FAC6791D1BAE88CC00793D20 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FADE52531BCB637C003BA365 /* FruitCode */ = {
+			isa = PBXGroup;
+			children = (
+				FAF2CE081BBCD07800FE870C /* Fruit.swift */,
+				FADE524F1BCB62AD003BA365 /* Lemon.swift */,
+				FADE524D1BCB6277003BA365 /* Orangeslice.swift */,
+				FAC14AD11BC62B39008AAC64 /* Apple.swift */,
+				FADE524B1BCB622B003BA365 /* Appleslice.swift */,
+				FADE52491BCB61F5003BA365 /* Acorn.swift */,
+				FADE52471BCB60B0003BA365 /* Zucchini.swift */,
+				FADE52431BCB5F36003BA365 /* Watermelon.swift */,
+				FADE52451BCB5F8B003BA365 /* Yam.swift */,
+				FADE523D1BCB5E13003BA365 /* Strawberry.swift */,
+				FADE52411BCB5EEB003BA365 /* Peach.swift */,
+				FADE523F1BCB5E95003BA365 /* Orange.swift */,
+			);
+			name = FruitCode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,14 +402,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC14AD21BC62B39008AAC64 /* Apple.swift in Sources */,
 				FAB541071BC42B95002F56C8 /* Utilities.swift in Sources */,
+				FADE523E1BCB5E13003BA365 /* Strawberry.swift in Sources */,
+				FADE52421BCB5EEB003BA365 /* Peach.swift in Sources */,
 				FABEC8381BC4B869006E03EA /* Alligator.swift in Sources */,
 				FAF2CE091BBCD07800FE870C /* Fruit.swift in Sources */,
+				FADE52401BCB5E95003BA365 /* Orange.swift in Sources */,
 				FAC679091BAE88CC00793D20 /* GameScene.swift in Sources */,
 				FAB792321BC45F6E006C4A4D /* NewGameScreen.swift in Sources */,
+				FADE524A1BCB61F5003BA365 /* Acorn.swift in Sources */,
+				FADE52461BCB5F8B003BA365 /* Yam.swift in Sources */,
+				FADE52501BCB62AD003BA365 /* Lemon.swift in Sources */,
 				FAC6790B1BAE88CC00793D20 /* GameViewController.swift in Sources */,
 				FAC6792B1BAE896100793D20 /* GameOverScene.swift in Sources */,
+				FADE524C1BCB622B003BA365 /* Appleslice.swift in Sources */,
+				FADE524E1BCB6277003BA365 /* Orangeslice.swift in Sources */,
+				FADE52481BCB60B0003BA365 /* Zucchini.swift in Sources */,
 				FAC679051BAE88CC00793D20 /* AppDelegate.swift in Sources */,
+				FADE52441BCB5F36003BA365 /* Watermelon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +557,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -519,6 +572,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
