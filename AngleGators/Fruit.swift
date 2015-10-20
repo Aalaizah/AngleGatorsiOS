@@ -9,7 +9,8 @@
 import SpriteKit
 
 let fruits = [["apple", "70"], ["orange", "70"], ["peach", "70"], ["watermelon", "90"], ["yam", "50"], ["zucchini", "50"], ["strawberry", "10"], ["acorn", "10"], ["appleslice", "30"], ["lemon", "50"], ["orangeslice", "30"]]
-let newFruits = [Apple(fruitType: 1)]
+var fruitTutorials = [true, true, true, true, true, true, true, true, true, true, true]
+var fruitCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 class Fruit: SKSpriteNode {
     var fruitAngle = 0
@@ -30,15 +31,21 @@ class Fruit: SKSpriteNode {
         self.physicsBody?.categoryBitMask = PhysicsCategory.Fruit // 3
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Alligator // 4
         self.physicsBody?.collisionBitMask = PhysicsCategory.None
-        if((labelText) != nil) {
+        if(fruitTutorials[fruitType]) {
             let label = SKLabelNode(fontNamed: "Courier")
             label.name = labelName
-            label.text = String(labelText!)
+            label.text = String(fruits[fruitType][1])
             label.horizontalAlignmentMode = .Left
             label.fontSize = FontSize
             label.fontColor = SKColor.blackColor()
             label.position = CGPoint(x: frame.size.width - self.size.width - 20, y: frame.size.height * 0.7)
             addChild(label)
+            fruitCounts[fruitType] += 1
+            //NSLog(fruits[fruitType][0] + ":" + String(fruitCounts[fruitType]))
+            if(fruitCounts[fruitType] >= 5)
+            {
+                fruitTutorials[fruitType] = false
+            }
         }
         else {
             let label = SKLabelNode(fontNamed: "Courier")

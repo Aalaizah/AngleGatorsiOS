@@ -98,6 +98,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         
         //playBackgroundMusic("background-music-aac.caf")
+        score = 0
         let background = SKSpriteNode(imageNamed: "mainbackground")
         background.position = CGPointMake(self.size.width/2, self.size.height/2);
         //addChild(background)
@@ -116,6 +117,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addScoreLabel()
         addAlligator()
         addAngleLabel()
+        runAction(SKAction.sequence([
+            SKAction.waitForDuration(NSTimeInterval(60)),
+            SKAction.runBlock{self.removeAngleLabel()}
+            ]))
     }
     
     override func update(currentTime: NSTimeInterval) {
@@ -124,7 +129,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func addAlligator() {
         player.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
-        
+        player.name = "player"
         addChild(player)
     }
     
@@ -150,7 +155,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.fontColor = SKColor.blackColor()
         scoreLabel.text = String(format: "Score: %03u", score)
         
-        scoreLabel.position = CGPoint(x: frame.size.width / 4, y: (frame.size.height / 6) * 5)
+        scoreLabel.position = CGPoint(x: (frame.size.width / 4) * 3, y: (frame.size.height / 6) * 5)
         addChild(scoreLabel)
     }
     
@@ -160,7 +165,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         livesLabel.text = String(format: "Lives: %01u", lives)
         livesLabel.fontSize = FontSize
         livesLabel.fontColor = SKColor.blackColor()
-        livesLabel.position = CGPoint(x: frame.size.width / 4, y: ((frame.size.height / 6) * 5) - 30)
+        livesLabel.position = CGPoint(x: (frame.size.width / 4) * 3, y: ((frame.size.height / 6) * 5) - 30)
         addChild(livesLabel)
     }
     
@@ -173,16 +178,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setupFruit() {
         let number = Int(random(CGFloat(0), max: CGFloat(fruits.count)))
-        let fruit:Apple = Apple(fruitType: 0)
-        fruit.position  = CGPoint(x: frame.size.width + fruit.size.width, y: size.height * 0.43)
+        let fruit = Fruit(fruitType: number, labelText: nil)
+        fruit.position  = CGPoint(x: frame.size.width + fruit.size.width, y: size.height * 0.33)
         addChild(fruit)
         addChild(fruit.label)
-        /*if (tutorial) {
-            let fruit:Fruit = Fruit(fruitType: number, label: true)
-            fruit.position = CGPoint(x: frame.size.width + fruit.size.width, y: size.height * 0.43)
-            addChild(fruit)
-            addChild(fruit.label)
-        }*/
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -190,13 +189,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let array = Array(touches)
         let touch = array[0]
         let touchLocation = touch.locationInNode(self)
+        let gator = self.childNodeWithName("player") as! Alligator
         if touchLocation.x < CGRectGetMidX(self.frame) && alligatorAngle < 90 {
             current += 1
             alligatorAngle = angles[current]
+            gator.changeImage(current)
         }
         else if touchLocation.x > CGRectGetMidX(self.frame) && alligatorAngle > 10 {
             current -= 1
             alligatorAngle  = angles[current]
+            gator.changeImage(current)
         }
         let angleLabel = childNodeWithName(angleLabelName) as! SKLabelNode
         angleLabel.text = String(alligatorAngle)
