@@ -10,12 +10,14 @@ import UIKit
 import SpriteKit
 
 class Alligator: SKSpriteNode {
-    var images = ["gator0", "gator20", "gator45", "gator70", "gator90" ]
+    var images = [10: "gator0", 15: "gator20", 30: "gator20", 45: "gator45", 50: "gator45", 60: "gator70", 70: "gator70", 75: "gator70", 90: "gator90" ]
     
     init() {
-        let texture = SKTexture(imageNamed: images[0])
+        let texture = SKTexture(imageNamed: images[10]!)
+        let textureSize = texture.size()
+        let boxSize = CGSize(width: (textureSize.width / 3) * 2, height: textureSize.height)
         super.init(texture: texture, color: SKColor.clearColor(), size: texture.size())
-        self.physicsBody = SKPhysicsBody(rectangleOfSize: texture.size())
+        self.physicsBody = SKPhysicsBody(rectangleOfSize: boxSize)
         self.physicsBody?.dynamic = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.Alligator
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Fruit
@@ -27,6 +29,6 @@ class Alligator: SKSpriteNode {
     }
     
     func changeImage(location: Int) {
-        self.texture = SKTexture(imageNamed: images[location])
+        self.texture = SKTexture(imageNamed: images[location]!)
     }
 }
